@@ -1,0 +1,45 @@
+<div>
+  <div>
+    <h1>
+      <%= @actor.first_name %> <%= @actor.last_name %> details
+    </h1>
+
+    <div>
+      <div>
+        <%= link_to 'Go back', actors_path %>
+      </div>
+
+      <div>
+        <%= link_to 'Edit actor', edit_actor_path(@actor) %>
+      </div>
+
+      <div>
+        <%= link_to 'Delete actor', @actor, method: :delete %>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @actor.first_name %> <%= @actor.last_name%>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@actor.created_at) %>
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@actor.updated_at) %>
+      </dd>
+    </dl>
+  </div>
+</div>
+

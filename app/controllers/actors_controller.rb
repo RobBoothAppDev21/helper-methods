@@ -18,6 +18,7 @@ class ActorsController < ApplicationController
   end
 
   def show
+    @actor = Actor.find(params.fetch(:id))
   end
 
   def create
