@@ -16,11 +16,19 @@ class ActorsController < ApplicationController
       format.html
     end
   end
-  
+
   def show
   end
 
   def create
+    @actor = Actor.new(actor_params)
+
+    if @actor.valid?
+      @actor.save
+      redirect_to actors_url, notice: 'Actor saved successfully'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -32,4 +40,9 @@ class ActorsController < ApplicationController
   def destroy
   end
 
+  private
+
+  def actor_params
+    params.require(:actor).permit(:first_name, :last_name)
+  end
 end
