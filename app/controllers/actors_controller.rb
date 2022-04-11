@@ -49,6 +49,10 @@ class ActorsController < ApplicationController
   end
 
   def destroy
+    @actor = Actor.find(params.fetch(:id))
+    @actor.destroy
+
+    redirect_to actors_url, notice: 'Actor deleted successfully'
   end
 
   private
