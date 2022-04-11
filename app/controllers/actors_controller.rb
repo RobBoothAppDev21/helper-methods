@@ -33,9 +33,19 @@ class ActorsController < ApplicationController
   end
 
   def edit
+    @actor = Actor.find(params.fetch(:id))
   end
 
   def update
+    @actor = Actor.find(params.fetch(:id))
+    @actor.update actor_params
+
+    if @actor.valid?
+      @actor.save
+      redirect_to actor_url(@actor), notice: 'Actor updated successfully.'
+    else
+      redirect_to actor_url(@actor), alert: 'Actor failed to update successfully.'
+    end
   end
 
   def destroy
